@@ -13,7 +13,6 @@ This action will compress and backup a given git repository to S3.
         with:
           fetch-depth: 0
           path: repo-to-backup
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Backup repo to s3
         uses: sammcj/backup-git-to-s3-action@main
