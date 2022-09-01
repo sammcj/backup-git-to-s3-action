@@ -1,0 +1,64 @@
+name: Backup git to S3
+description: A Github Action to compress and backup a given git repository to AWS s3
+
+inputs:
+  s3-bucket:
+    type: string
+    required: true
+    description: 'The S3 bucket name'
+  s3-prefix:
+    type: string
+    required: false
+    description: 'The S3 prefix to use for the backup'
+    default: 'githubRepoBackup'
+  s3-region:
+    type: string
+    required: false
+    description: 'The S3 region to use for the backup'
+    default: 'ap-southeast-2'
+  repository-name:
+    type: string
+    required: false
+    description: 'The name of the repository to backup, defaults to the current repository name'
+  repository-path:
+    type: string
+    required: false
+    description: 'The temporary path for the repository to clone and backup, defaults to ./repo-to-backup/'
+    default: './repo-to-backup/'
+  temp-dir:
+    type: string
+    required: false
+    description: 'The temporary directory to use for the backup, defaults to /tmp'
+    default: '/tmp'
+  tar-command:
+    type: string
+    required: false
+    description: 'The tar command to use to compress the git repo, defaults to tar -czvf'
+    default: 'tar -czvf'
+
+runs:
+  using: composite
+  steps:
+    - run: echo "::add-matcher::${GITHUB_ACTION_PATH}/matcher.json"
+      shell: bash
+
+    - name: Checkout repo to be backed up
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        path: repo-to-backup
+
+    - name: Run Backup Script
+      run: ${GITHUB_ACTION_PATH}/backup-git-to-s3.sh
+      shell: bash
+      env:
+        BUCKET: ${{ inputs.s3-bucket }}
+        PREFIX: ${{ inputs.s3-prefix }}
+        REPOSITORY_NAME: ${{ inputs.repository-name }}
+        REPOSITORY_PATH: ${{ inputs.repository-path }}
+        TEMP_DIR: ${{ inputs.temp-dir }}
+        TAR_COMMAND: ${{ inputs.tar-command }}
+        S3_REGION: ${{ inputs.s3-region }}
+
+    - run: echo "::remove-matcher owner=bash-action::"
+      shell: bash
