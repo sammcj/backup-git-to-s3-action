@@ -1,0 +1,55 @@
+name: Verify
+
+on: push
+
+jobs:
+  static_checks:
+    name: Static Checks (linting, formatting, etc.)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # shellcheck linting
+      - uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: shellcheck
+          level: warn
+          path: .
+          pattern: '*.sh'
+          exclude: 'node_modules/**'
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup BATS
+        uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.7.0
+
+      - name: Run Tests
+        run: bats --trace --print-output-on-failure test/
+
+  # self_check:
+  #   name: Run this Action
+  #   runs-on: ubuntu-latest
+  #   needs: [static_checks, tests]
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - uses: ./
+  #       with:
+  #         command: greet
+  #         who: world
+
+  #     - uses: ./
+  #       id: error_step
+  #       continue-on-error: true
+  #       with:
+  #         command: error
+
+  #     - name: ensure error command failed
+  #       if: steps.error_step.outcome == 'success'
+  #       run: exit 1
