@@ -42,13 +42,6 @@ runs:
     - run: echo "::add-matcher::${GITHUB_ACTION_PATH}/matcher.json"
       shell: bash
 
-    - name: Checkout repo to be backed up
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        path: repo-to-backup
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Run Backup Script
       run: ${GITHUB_ACTION_PATH}/backup-git-to-s3.sh
       shell: bash
