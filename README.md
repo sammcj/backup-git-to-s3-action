@@ -7,6 +7,7 @@ This action will compress and backup a given git repository to S3.
 ```yaml
 - name: Backup git repo to S3
   uses: sammcj/backup-git-to-s3-action@main
+  runs-on: ubuntu-latest
   with:
     s3-bucket: 'my-git-backup-bucket'
     s3-prefix: 'githubRepoBackup'
