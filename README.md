@@ -1,5 +1,10 @@
 # Backup git to S3 Action
 
+[![Build Status (latest push)](https://github.com/sammcj/backup-git-to-s3-action/workflows/Bump%20version/badge.svg)](https://github.com/sammcj/backup-git-to-s3-action/workflows/bump-version)
+[![Stable Version](https://img.shields.io/github/v/tag/sammcj/backup-git-to-s3-action)](https://img.shields.io/github/v/tag/sammcj/backup-git-to-s3-action)
+[![Latest Release](https://img.shields.io/github/v/release/sammcj/backup-git-to-s3-action?color=%233D9970)](https://img.shields.io/github/v/release/sammcj/backup-git-to-s3-action?color=%233D9970)
+
+
 This action will compress and backup a given git repository to S3.
 
 ## Usage
