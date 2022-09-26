@@ -1,13 +1,14 @@
 {
   "extends": ["config:base"],
-  "commitMessagePrefix": "Hotfix-0000/00/00 --",
+  "commitMessagePrefix": "chore(renovate):",
+  "description": "This file is managed in template-repo",
   "packageRules": [
     {
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["major"],
       "reviewersFromCodeOwners": true,
       "addLabels": ["renovatebot", "major", "version-update"],
-      "commitMessagePrefix": "Hotfix-0000/00/00 -- major",
+      "commitMessagePrefix": "chore(renovate): major",
       "groupName": "major"
     },
     {
@@ -15,7 +16,7 @@
       "matchUpdateTypes": ["minor"],
       "reviewersFromCodeOwners": true,
       "addLabels": ["renovatebot", "minor", "version-update"],
-      "commitMessagePrefix": "Hotfix-0000/00/00 -- minor",
+      "commitMessagePrefix": "chore(renovate): minor",
       "groupName": "minor"
     },
     {
@@ -23,7 +24,7 @@
       "matchUpdateTypes": ["patch"],
       "reviewersFromCodeOwners": true,
       "addLabels": ["renovatebot", "patch", "version-update"],
-      "commitMessagePrefix": "Hotfix-0000/00/00 -- patch",
+      "commitMessagePrefix": "chore(renovate): patch",
       "groupName": "patch"
     },
     {
@@ -31,12 +32,13 @@
       "matchUpdateTypes": ["pin", "digest"],
       "reviewersFromCodeOwners": true,
       "addLabels": ["renovatebot", "pin", "version-update"],
-      "commitMessagePrefix": "Hotfix-0000/00/00 -- pin",
+      "commitMessagePrefix": "chore(renovate): pin",
       "groupName": "pin"
     }
   ],
   "vulnerabilityAlerts": {
-    "commitMessagePrefix": "Hotfix-0000/00/00 -- Security update",
+    "commitMessagePrefix": "chore(renovate): Security update",
     "labels": ["security"]
-  }
+  },
+  "ignorePaths": ["files/**", "node_modules/**"]
 }
