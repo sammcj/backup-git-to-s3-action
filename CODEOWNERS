@@ -1,5 +1,3 @@
-#### THIS FILE IS MANAGED BY AN AUTOMATED WORKFLOW ####
-
-# Sam McLeod, Renovate Approval App
+# Sam McLeod
 backup-git-to-s3.sh @sammcj
 action.yml @sammcj
