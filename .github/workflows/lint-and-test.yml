@@ -7,9 +7,9 @@ jobs:
     name: Static Checks (linting, formatting, etc.)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
       # shellcheck linting
-      - uses: reviewdog/action-shellcheck@v1
+      - uses: reviewdog/action-shellcheck@66c9a47bf02255b250284a82251cb4cadf5043f5 # tag=v1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: shellcheck
@@ -22,10 +22,10 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
 
       - name: Setup BATS
-        uses: mig4/setup-bats@v1
+        uses: mig4/setup-bats@af9a00deb21b5d795cabfeaa8d9060410377686d # tag=v1
         with:
           bats-version: 1.7.0
 
