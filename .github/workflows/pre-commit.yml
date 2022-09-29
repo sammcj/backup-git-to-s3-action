@@ -22,5 +22,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@b55428b1882923874294fa556849718a1d7f2ca5 # tag=v4
       - uses: pre-commit/action@v3.0.0
