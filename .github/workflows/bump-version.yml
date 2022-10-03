@@ -21,7 +21,7 @@ jobs:
           release_branches: main
           pre_release_branches: dev
       - name: Create a GitHub release
-        uses: ncipollo/release-action@58ae73b360456532aafd58ee170c045abbeaee37 # tag=v1
+        uses: ncipollo/release-action@d9356040b0dc694f6d006b6cabee4d3c024f9e72 # tag=v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
