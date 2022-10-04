@@ -170,6 +170,7 @@ Gemfile.lock
 
 # Bootstrap files
 *private*.rc
+.gitconfig.private
 redo_aliases
 
 # Docker
